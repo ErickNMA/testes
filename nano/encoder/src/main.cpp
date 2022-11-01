@@ -53,9 +53,9 @@ void loop()
         if(i%2)
         {
           v = ((pos[1]-pos[0])/(time[1]-time[0]));
-          Serial.print("\n V = ");
+          Serial.print('*');
           Serial.print(v);
-          Serial.println(" rad/s");
+          Serial.println('*');
         }
         i++;     
         mode = 2;    
