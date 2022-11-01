@@ -1,0 +1,11 @@
+=>	1	Vermelho	M1	
+
+=>	2	Preto		M2
+
+=>	3	Laranja	ENC_VCC
+
+=>	4	Amarelo	ENC_A
+
+=>	5	Verde		ENC_B
+
+=>	6	Azul		ENC_GND

@@ -3,23 +3,23 @@
 #include <math.h>
 
 //Definição dos pinos:
-#define DT 5
-#define CLK 6
+#define A 5
+#define B 6
 
 //Resolução do encoder:
-#define resolution 20
+#define resolution 11
 
 //Inicializações:
 void setup() 
 {
   Serial.begin(9600);
 
-  pinMode(DT, INPUT);
-  pinMode(CLK, INPUT);
+  pinMode(B, INPUT);
+  pinMode(A, INPUT);
 }
 
 //Definição de variáveis:
-bool last_DT=true, last_CLK=true;
+bool last_B=true, last_A=true;
 long step=0;
 unsigned long i=0;
 double time[2], v=0, pos[2];
@@ -29,19 +29,19 @@ void loop()
 {
 
   //Leitura do encoder:
-  bool current_DT = digitalRead(DT);
-  bool current_CLK = digitalRead(CLK);
+  bool current_B = digitalRead(B);
+  bool current_A = digitalRead(A);
   //Aguarda contato:
-  if((last_DT && last_CLK) && !mode)
+  if((last_B && last_A) && !mode)
   {
     mode = 1;
   }
   //Identifica sentido:
   if(mode == 1)
   {
-    if(current_DT != current_CLK)
+    if(current_B != current_A)
     {
-        if(current_DT)
+        if(current_B)
         {
           step--;
         }else
@@ -64,11 +64,11 @@ void loop()
   //Fim do contato mecânico:
   if(mode == 2)
   {
-    if(!last_DT && !last_CLK)
+    if(!last_B && !last_A)
     {
       mode = 0;
     }
   }
-  last_DT = current_DT;
-  last_CLK = current_CLK;
+  last_B = current_B;
+  last_A = current_A;
 }
