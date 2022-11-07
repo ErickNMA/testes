@@ -9,9 +9,12 @@ def check_port():
             pass
 port = check_port()
 
-time.sleep(3)
-port.timeout = 3
+time.sleep(2)
 
-port.write(bytes(180, 'utf-8'))
+while True:
+    send = str(0)
+    port.write(send.encode('utf-8'))
+    listen = port.readline()
+    print(listen.decode('utf-8'))
 
 port.close()
